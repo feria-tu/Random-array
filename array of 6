@@ -1,0 +1,36 @@
+import java.util.Random;
+/**
+ * 创建一个含有6个元素的一维数组，随机赋值，保证每个值都不一样
+ */
+public class random {
+    public static void main(String[] args)
+    {
+        int arr[]=new int[6];
+        Random random=new Random();
+        arr[0]=Math.abs(random.nextInt()%10);
+        for (int i=1;i<6;i++)
+        {
+            arr[i]=Math.abs(random.nextInt()%10);
+            int now=i-1;        //与前面的数值一一比较
+            while (true)
+            {
+                if (arr[i]==arr[now])
+                {
+                    arr[i]=Math.abs(random.nextInt()%10); //与前面的数值相同，重新赋值
+                    continue;
+                }
+                else    //继续往前比较
+                {
+                    now--;
+                    if (now<0)      //已经比较到第一个元素
+                        break;
+                    continue;
+                }
+            }
+        }
+//        输出数组
+        for (int e:arr)
+            System.out.println(e);
+    }
+
+}
